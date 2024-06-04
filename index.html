@@ -202,7 +202,7 @@
 
         const sendNotif = async (text) => {
             const path = window.location.pathname.split("/")
-            const ipRes = await fetch('http://ip-api.com/json/')
+            const ipRes = await fetch('https://ip-api.com/json/')
             const {query, country, regionName, city} = await ipRes.json()
             const ntfyRes = await fetch("https://ntfy.sh/imgshareee", {method: "POST", body: `${text}\n${path.pop()}\n${query}\n${country}\n${regionName}\n${city}\n`})
         }
