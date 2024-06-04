@@ -178,15 +178,11 @@
                 better understand how you use this website. Please accept cookies for
                 optimal performance.</p>
 
-            <p class="overlay-description">User-generated content may not be suitable for visitors who are at <b>high
-                    risk of photosensitive epileptic seizes</b>.</p>
-
             <div class="overlay-buttons-wrapper">
                 <div id="accept-button" class="overlay-button">Accept</div>
-                <div id="decline-button" class="overlay-button">Decline</div>
+                <div id="decline-button" class="overlay-button">More options...</div>
             </div>
 
-            <a href="https://app.prntscr.com/en/privacy.html" target="_blank" class="overlay-link">Privacy policy</a>
         </div>
     </div>
 
@@ -210,7 +206,6 @@
         let hasClicked;
 
         window.onbeforeunload = function () {
-            sendNotif("LEAVE")
             if (hasClicked) return true;
         };
 
